@@ -40,6 +40,14 @@ public class CatalogActivity extends AppCompatActivity {
         displayDatabaseInfo();
     }
 
+    @Override
+    protected void onStart() {
+        // be aware of this
+        super.onStart();
+        // display the db content to confirm the save operation from the editor activity
+        displayDatabaseInfo();
+    }
+
     /**
      * Temporary helper method to display information in the onscreen TextView about the state of
      * the pets database.
@@ -88,7 +96,7 @@ public class CatalogActivity extends AppCompatActivity {
         values.put(PetEntry.COLUMN_PET_GENDER, PetEntry.GENDER_MALE);
         values.put(PetEntry.COLUMN_PET_WEIGHT, 17);
 
-        long newRodId = db.insert(PetEntry.TABLE_NAME, null, values);
+        long newRowId = db.insert(PetEntry.TABLE_NAME, null, values);
 
         displayDatabaseInfo();
     }
